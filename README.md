@@ -2,6 +2,7 @@
 
 <img src="icons/icon.png" width="32" height="32" style="vertical-align: middle;"> A Firefox extension that helps you track your progress through YouTube courses with chapter-based progress tracking.
 
+<img src="docs/cs50.png" style="vertical-align: middle;">
 ## Features
 
 - **Track YouTube courses** - Add any YouTube video with chapters to your course list
