@@ -1,0 +1,34 @@
+{
+  "manifest_version": 2,
+  "name": "YouTube Course Tracker",
+  "version": "1.0",
+  "description": "Track your progress through YouTube courses with chapter-based progress tracking",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "tabs",
+    "https://www.youtube.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/watch*"],
+      "js": ["content.js"],
+      "css": ["content.css"]
+    }
+  ],
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_title": "YouTube Course Tracker"
+  },
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "icons": {
+    "128": "icons/icon.png"
+  },
+  "web_accessible_resources": [
+    "icons/*.svg",
+    "icons/*.png"
+  ]
+}

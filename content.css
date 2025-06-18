@@ -1,0 +1,410 @@
+#course-tracker-ui {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin: 16px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  display: block;
+}
+
+.course-tracker-container {
+  overflow: hidden;
+}
+
+.course-tracker-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: #f8f9fa;
+  border-bottom: 1px solid #e0e0e0;
+  border-radius: 8px 8px 0 0;
+}
+
+.course-tracker-title {
+  font-weight: 600;
+  color: #ff0000;
+  font-size: 14px;
+}
+
+.course-tracker-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.course-tracker-toggle,
+.course-tracker-add-remove,
+.course-tracker-import {
+  background: none;
+  border: 1px solid #ddd;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 4px;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  transition: all 0.2s ease;
+}
+
+.course-tracker-toggle:hover,
+.course-tracker-add-remove:hover,
+.course-tracker-import:hover {
+  background: #f5f5f5;
+  border-color: #999;
+  color: #333;
+}
+
+.course-tracker-content {
+  padding: 16px;
+}
+
+.course-tracker-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-size: 12px;
+  color: #666;
+}
+
+.course-tracker-chapter-list {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.course-tracker-chapter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-bottom: 4px;
+  border: 1px solid transparent;
+  background: #f5f5f5;
+}
+
+.course-tracker-chapter:hover {
+  background: #eeeeee;
+}
+
+.course-tracker-chapter.current {
+  background: #fff0f0;
+  border-color: #ff0000;
+}
+
+.course-tracker-chapter.completed {
+  background: #ffe6e6;
+}
+
+.course-tracker-chapter.completed.current {
+  background: #ffcccc;
+}
+
+.chapter-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.chapter-title {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 2px;
+}
+
+.chapter-timestamp {
+  font-size: 11px;
+  color: #666;
+  font-family: monospace;
+}
+
+.chapter-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 12px;
+}
+
+.chapter-status {
+  background: none;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 28px;
+  height: 28px;
+  font-size: 12px;
+  cursor: pointer;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.chapter-status:hover:not(:disabled) {
+  background: #f5f5f5;
+  border-color: #999;
+  color: #333;
+}
+
+.chapter-status:disabled {
+  opacity: 0.6;
+  cursor: default !important;
+}
+
+
+.chapter-reset-btn {
+  background: none;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 28px;
+  height: 28px;
+  font-size: 12px;
+  cursor: pointer;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.chapter-reset-btn:hover {
+  background: #f5f5f5;
+  border-color: #999;
+  color: #333;
+}
+
+.chapter-progress-container {
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.chapter-progress-bar {
+  flex: 1;
+  height: 3px;
+  background: #ddd;
+  border-radius: 0;
+  position: relative;
+  overflow: visible;
+}
+
+.chapter-progress-fill {
+  height: 100%;
+  background: #ff0000 !important;
+  border-radius: 0;
+  transition: width 0.3s ease;
+}
+
+.chapter-progress-gap {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  background: #ff6666;
+  border-radius: 0;
+  opacity: 0.7;
+}
+
+
+.chapter-progress-text {
+  font-size: 10px;
+  color: #666;
+  min-width: 30px;
+  text-align: right;
+}
+
+/* Sidebar specific styling */
+#secondary #course-tracker-ui {
+  margin: 0 0 16px 0;
+  max-width: 100%;
+}
+
+#secondary .course-tracker-content {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  #secondary #course-tracker-ui {
+    margin: 16px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .course-tracker-content {
+    padding: 12px;
+  }
+  
+  .course-tracker-chapter {
+    padding: 6px 8px;
+  }
+  
+  .chapter-title {
+    font-size: 12px;
+  }
+  
+  .chapter-timestamp {
+    font-size: 10px;
+  }
+  
+  .chapter-reset-btn,
+  .chapter-status,
+  .course-tracker-toggle,
+  .course-tracker-add-remove {
+    width: 24px;
+    height: 24px;
+    font-size: 10px;
+  }
+  
+  .chapter-progress-text {
+    font-size: 9px;
+    min-width: 25px;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  #course-tracker-ui {
+    background: #1a1a1a;
+    border-color: #333;
+    color: #e0e0e0;
+  }
+  
+  .course-tracker-header {
+    background: #2a2a2a;
+    border-bottom-color: #333;
+  }
+  
+  .course-tracker-title {
+    color: white;
+  }
+  
+  .course-tracker-toggle,
+  .course-tracker-add-remove {
+    color: white;
+  }
+  
+  .course-tracker-toggle:hover,
+  .course-tracker-add-remove:hover {
+    background: #333;
+    border-color: #666;
+  }
+  
+  .course-tracker-toggle,
+  .course-tracker-add-remove {
+    border-color: #444;
+  }
+  
+  /* Make SVG icons white in dark mode */
+  .course-tracker-title img,
+  .course-tracker-toggle img,
+  .course-tracker-add-remove img,
+  .chapter-status img,
+  .chapter-reset-btn img {
+    filter: invert(1) brightness(1);
+  }
+  
+  .chapter-status {
+    border-color: #444;
+    color: #ccc;
+  }
+  
+  .chapter-status:hover:not(:disabled) {
+    background: #333;
+    border-color: #666;
+    color: #fff;
+  }
+  
+  .chapter-status:disabled {
+    opacity: 0.4;
+  }
+  
+  
+  .course-tracker-chapter {
+    background: #333333;
+  }
+  
+  .course-tracker-chapter:hover {
+    background: #404040;
+  }
+  
+  .course-tracker-chapter.current {
+    background: #5f1e1e;
+    border-color: #ff0000;
+  }
+  
+  .course-tracker-chapter.completed {
+    background: #3a1e1e;
+  }
+  
+  .course-tracker-chapter.completed.current {
+    background: #4a2e2e;
+  }
+  
+  .chapter-title {
+    color: #e0e0e0;
+  }
+  
+  .chapter-timestamp {
+    color: #999;
+  }
+  
+  .chapter-progress-bar {
+    background: white;
+  }
+  
+  .chapter-progress-fill {
+    background: #ff0000 !important;
+  }
+  
+  
+  .chapter-reset-btn {
+    border-color: #444;
+    color: #ccc;
+  }
+  
+  .chapter-reset-btn:hover {
+    background: #333;
+    border-color: #666;
+    color: #fff;
+  }
+  
+  .chapter-progress-text {
+    color: #999;
+  }
+  
+  /* Dark mode button styles */
+  .course-tracker-toggle,
+  .course-tracker-add-remove,
+  .course-tracker-import {
+    border-color: #444;
+    color: #ccc;
+  }
+  
+  .course-tracker-toggle:hover,
+  .course-tracker-add-remove:hover,
+  .course-tracker-import:hover {
+    background: #333;
+    border-color: #666;
+    color: #fff;
+  }
+  
+  /* Invert icon colors for dark mode */
+  .course-tracker-import img,
+  .course-tracker-add-remove img,
+  .course-tracker-toggle img {
+    filter: invert(1);
+  }
+}
