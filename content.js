@@ -34,19 +34,19 @@ class YouTubeCourseTracker {
   }
 
   async loadCourseData() {
-    console.log('Loading course data...');
+    console.log('Loading video data...');
     const result = await browser.storage.local.get(['courses']);
     const courses = result.courses || {};
     this.courseData = courses[this.videoId];
     
-    console.log('Course data:', this.courseData);
+    console.log('Video data:', this.courseData);
     
     if (this.courseData) {
-      console.log('Course is tracked, showing progress UI');
+      console.log('Video is tracked, showing progress UI');
       this.updateSessionCount();
       this.showProgressUI();
     } else {
-      console.log('Course not tracked yet, showing add bubble');
+      console.log('Video not tracked yet, showing add bubble');
       this.showAddBubble();
     }
   }
@@ -202,8 +202,9 @@ class YouTubeCourseTracker {
       
       console.log(`Chapter ${this.currentChapter} progress: ${(progressPercentage * 100).toFixed(1)}% (${chapterProgress.toFixed(1)}s / ${chapterDuration.toFixed(1)}s)`);
       
-      // Mark chapter as completed if watched 90% or more
-      if (progressPercentage >= 0.9 && !this.courseData.progress[this.currentChapter].completed) {
+      // Mark chapter as completed if within last 2 seconds of chapter
+      const remainingTime = chapterDuration - chapterProgress;
+      if (remainingTime <= 1 && !this.courseData.progress[this.currentChapter].completed) {
         console.log(`Chapter ${this.currentChapter} completed!`);
         this.courseData.progress[this.currentChapter].completed = true;
         await this.saveCourseData();
@@ -254,7 +255,7 @@ class YouTubeCourseTracker {
     this.progressUI.innerHTML = `
       <div class="course-tracker-container">
         <div class="course-tracker-header">
-          <span class="course-tracker-title"><img src="${browser.runtime.getURL('icons/book.svg')}" width="16" height="16" style="vertical-align: middle; margin-right: 6px;">Course Progress</span>
+          <span class="course-tracker-title"><img src="${browser.runtime.getURL('icons/book.svg')}" width="16" height="16" style="vertical-align: middle; margin-right: 6px;">Video Progress</span>
           <div class="course-tracker-actions">
             <button class="course-tracker-import" title="Import/Edit chapters"><img src="${browser.runtime.getURL('icons/manual.svg')}" width="14" height="14"></button>
             <button class="course-tracker-add-remove" title="Add/Remove from tracking"></button>
@@ -321,7 +322,7 @@ class YouTubeCourseTracker {
     const addBubble = document.createElement('div');
     addBubble.id = 'course-tracker-add-bubble';
     addBubble.innerHTML = `<img src="${browser.runtime.getURL('icons/add.svg')}" width="24" height="24">`;
-    addBubble.title = 'Add to Course Tracker';
+    addBubble.title = 'Add to Video Tracker';
     addBubble.style.cssText = `
       position: fixed;
       top: 50%;
@@ -382,9 +383,9 @@ class YouTubeCourseTracker {
           <p><strong>Debug Info:</strong></p>
           <p>Video ID: ${this.videoId}</p>
           <p>Course Data: ${this.courseData ? 'Found' : 'Not found'}</p>
-          <p>This video is not being tracked as a course.</p>
-          <p>Click the extension icon in your browser toolbar and select "Track Course" to start tracking your progress!</p>
-          <button onclick="console.log('Current course data:', ${JSON.stringify(this.courseData)})" style="margin-top: 10px; padding: 5px 10px;">Log Debug Info</button>
+          <p>This video's progress is not being tracked.</p>
+          <p>Click the extension icon in your browser toolbar and select "Track Video" to start tracking your progress!</p>
+          <button onclick="console.log('Current video data:', ${JSON.stringify(this.courseData)})" style="margin-top: 10px; padding: 5px 10px;">Log Debug Info</button>
         </div>
       `;
     }
@@ -481,12 +482,14 @@ class YouTubeCourseTracker {
       // Update timestamp with current time in chapter
       const timestampElement = chapterElement.querySelector('.chapter-timestamp');
       if (timestampElement) {
-        let timestampText = `${chapter.timestamp}${chapter.duration ? ` (${formatTime(chapter.duration)})` : ''}`;
+        let timestampText = chapter.timestamp;
         
         if (isCurrentChapter && chapter.duration) {
           const currentTimeInChapter = Math.max(0, currentTime - chapter.seconds);
           const currentTimeFormatted = formatTime(currentTimeInChapter);
-          timestampText += ` <span style="color: #ff0000;">${currentTimeFormatted}</span>`;
+          timestampText += ` (<span style="color: #ff0000;">${currentTimeFormatted}</span> : ${formatTime(chapter.duration)})`;
+        } else if (chapter.duration) {
+          timestampText += ` (${formatTime(chapter.duration)})`;
         }
         
         timestampElement.innerHTML = timestampText;
@@ -783,7 +786,7 @@ class YouTubeCourseTracker {
           console.log(`Moving to next chapter: ${nextChapterIndex}`);
           this.jumpToChapter(nextChapterIndex);
         } else {
-          console.log('Course completed! No more chapters.');
+          console.log('Video completed! No more chapters.');
         }
       } else {
         console.log(`Chapter ${chapterIndex} completed, but staying on current chapter ${this.currentChapter}`);
@@ -875,7 +878,7 @@ class YouTubeCourseTracker {
   async toggleVideoTracking() {
     if (this.courseData) {
       // Remove from tracking - show confirmation prompt
-      const courseTitle = this.courseData.title || 'this course';
+      const courseTitle = this.courseData.title || 'this video';
       
       // Check if user has disabled confirmation
       const result = await browser.storage.local.get(['skipRemoveConfirmation']);
@@ -945,7 +948,7 @@ class YouTubeCourseTracker {
       `;
       
       modalContent.innerHTML = `
-        <h3 style="margin: 0 0 15px 0; color: ${isDarkMode ? '#e0e0e0' : '#333'};">Remove Course</h3>
+        <h3 style="margin: 0 0 15px 0; color: ${isDarkMode ? '#e0e0e0' : '#333'};">Remove Video</h3>
         <p style="color: ${isDarkMode ? '#ccc' : '#666'}; font-size: 14px; margin-bottom: 20px;">
           Are you sure you want to remove "<strong style="color: ${isDarkMode ? '#fff' : '#333'};">${courseTitle}</strong>" from tracking? 
           This will also delete any manually imported chapters and all progress data.
@@ -974,7 +977,7 @@ class YouTubeCourseTracker {
             border-radius: 4px;
             cursor: pointer;
             transition: all 0.2s ease;
-          " onmouseover="this.style.background='#cc0000'" onmouseout="this.style.background='#ff0000'">Remove Course</button>
+          " onmouseover="this.style.background='#cc0000'" onmouseout="this.style.background='#ff0000'">Remove Video</button>
         </div>
       `;
       
@@ -1477,7 +1480,7 @@ class YouTubeCourseTracker {
 console.log('Content script loaded on:', window.location.href);
 
 function initTracker() {
-  console.log('Initializing YouTube Course Tracker');
+  console.log('Initializing YouTube Video Tracker');
   new YouTubeCourseTracker();
 }
 

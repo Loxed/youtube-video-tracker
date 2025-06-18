@@ -1,8 +1,8 @@
-// Background script for YouTube Course Tracker
+// Background script for YouTube Video Tracker
 // Handles extension lifecycle and cross-tab communication
 
 browser.runtime.onInstalled.addListener(() => {
-  console.log('YouTube Course Tracker installed');
+  console.log('YouTube Video Tracker installed');
 });
 
 // Handle messages from content scripts and popup
@@ -47,7 +47,7 @@ async function cleanupOldData() {
   for (const [videoId, course] of Object.entries(courses)) {
     const lastWatched = course.lastWatched ? new Date(course.lastWatched) : new Date(course.dateAdded);
     
-    // Remove courses not watched in the last month
+    // Remove Videos not watched in the last month
     if (lastWatched < oneMonthAgo) {
       delete courses[videoId];
       hasChanges = true;
@@ -56,6 +56,6 @@ async function cleanupOldData() {
   
   if (hasChanges) {
     await browser.storage.local.set({ courses });
-    console.log('Cleaned up old course data');
+    console.log('Cleaned up old video data');
   }
 }

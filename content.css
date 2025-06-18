@@ -224,6 +224,11 @@
   text-align: right;
 }
 
+/* Make the floating add bubble icon white */
+#course-tracker-add-bubble img {
+  filter: invert(1) brightness(1);
+}
+
 /* Sidebar specific styling */
 #secondary #course-tracker-ui {
   margin: 0 0 16px 0;

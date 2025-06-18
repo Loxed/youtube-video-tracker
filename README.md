@@ -1,4 +1,4 @@
-# YouTube Course Tracker
+# YouTube Video Tracker
 
 A Firefox extension that helps you track your progress through YouTube courses with chapter-based progress tracking.
 
@@ -24,7 +24,7 @@ A Firefox extension that helps you track your progress through YouTube courses w
 - **Percentage display**: Shows completion percentage per chapter
 
 ### Interactive Elements
-- **Floating button**: Always-visible course tracker access
+- **Floating button**: Always-visible Video Tracker access
 - **Chapter navigation**: Click chapters to jump to timestamps
 - **Reset buttons**: Individual chapter progress reset (↻ icon)
 - **Collapsible UI**: Minimize/maximize the progress tracker
@@ -134,9 +134,38 @@ The extension automatically parses various timestamp formats from video descript
 
 The extension includes custom-generated icons showing a book with progress bars, representing the course tracking functionality. Icons are available in 16x16, 48x48, and 128x128 sizes.
 
+### Icon Attribution
+
+This extension uses icons from the CSS.GG icon library (stylized as CSS＊GG) and GLYF＊APP:
+- **Source**: https://css.gg | https://glyf.app
+- **Repository**: https://github.com/astrit/css.gg
+- **Author**: Astrit
+- **Icons used**: Various UI icons for buttons and interface elements
+
+The CSS.GG and GLYF＊APP icons are used under their license terms. All brand names and stylizations remain intact and unaltered as required.
+
 ## 📄 License
 
 This project is open source and available under the MIT License.
+
+### Third-Party Licenses
+
+#### CSS.GG & GLYF＊APP Icons
+
+The icons used in this extension are from the CSS.GG icon library (stylized as CSS＊GG) and GLYF＊APP, which are subject to their own license terms:
+
+**Copyright © 2024 CSS＊GG & GLYF＊APP**
+- **Websites**: https://css.gg | https://glyf.app
+- **Repository**: https://github.com/astrit/css.gg
+- **Author**: Astrit
+
+**License Summary**:
+- Attribution required to CSS＊GG, GLYF＊APP, and author Astrit
+- Brand names and stylizations must remain intact and unaltered
+- Used for personal, non-commercial purposes in this extension
+- Full license terms available at: https://css.gg
+
+**Attribution**: This extension uses icons from CSS.GG (CSS＊GG) and GLYF＊APP by Astrit. The brand names and their stylizations remain intact and unaltered as required by their license terms.
 
 ## 🤝 Contributing
 

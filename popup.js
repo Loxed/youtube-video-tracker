@@ -422,11 +422,11 @@ class CourseTracker {
       return `
         <div class="course-item ${isCurrentVideo ? 'current' : ''}" data-video-id="${videoId}">
           <div class="course-thumbnail">
-            <img src="https://img.youtube.com/vi/${videoId}/mqdefault.jpg" alt="Course thumbnail" onerror="this.style.display='none'">
+            <img src="https://img.youtube.com/vi/${videoId}/mqdefault.jpg" alt="Video thumbnail" onerror="this.style.display='none'">
           </div>
           <div class="course-content">
             <div class="course-actions">
-              <button class="course-action-btn remove" data-action="remove" title="Remove course">
+              <button class="course-action-btn remove" data-action="remove" title="Remove video">
                 <img src="icons/remove.svg" width="12" height="12">
               </button>
             </div>
