@@ -1,21 +1,21 @@
 # YouTube Video Tracker
 
-A Firefox extension that helps you track your progress through YouTube courses with chapter-based progress tracking.
+<img src="icons/book.svg" width="24" height="24" style="vertical-align: middle;"> A Firefox extension that helps you track your progress through YouTube courses with chapter-based progress tracking.
 
-## 🎯 Features
+## Features
 
-- 📚 **Track YouTube courses** - Add any YouTube video with chapters to your course list
-- ⏱️ **Real-time progress tracking** - Automatically tracks which chapters you've completed
-- 📊 **Advanced progress visualization** - Shows watched portions vs current position with gap indicators
-- 🎯 **Quick chapter navigation** - Click any chapter to jump directly to that timestamp
-- ↻ **Chapter reset functionality** - Reset individual chapter progress with one click
-- 📈 **Session tracking** - Counts how many times you've watched each course
-- ⏰ **Accurate watch time tracking** - Only counts time when video is actually playing
-- 🎨 **Clean sidebar UI** - Progress tracker appears in the right sidebar above video suggestions
-- 🌙 **Dark mode support** - Automatically adapts to your browser's theme
-- 📱 **Responsive design** - Works on desktop, tablet, and mobile
+- **Track YouTube courses** - Add any YouTube video with chapters to your course list
+- **Real-time progress tracking** - Automatically tracks which chapters you've completed  
+- **Advanced progress visualization** - Shows watched portions vs current position with gap indicators
+- **Quick chapter navigation** - Click any chapter to jump directly to that timestamp
+- **Chapter reset functionality** - Reset individual chapter progress with one click
+- **Session tracking** - Counts how many times you've watched each course
+- **Accurate watch time tracking** - Only counts time when video is actually playing
+- **Clean sidebar UI** - Progress tracker appears in the right sidebar above video suggestions
+- **Dark mode support** - Automatically adapts to your browser's theme
+- **Responsive design** - Works on desktop, tablet, and mobile
 
-## 🎨 UI Features
+## UI Features
 
 ### Progress Visualization
 - **Green bars**: Completed watch time
@@ -26,10 +26,10 @@ A Firefox extension that helps you track your progress through YouTube courses w
 ### Interactive Elements
 - **Floating button**: Always-visible Video Tracker access
 - **Chapter navigation**: Click chapters to jump to timestamps
-- **Reset buttons**: Individual chapter progress reset (↻ icon)
+- **Reset buttons**: Individual chapter progress reset <img src="icons/reset.svg" width="16" height="16" style="vertical-align: middle;">
 - **Collapsible UI**: Minimize/maximize the progress tracker
 
-## 📝 Supported Timestamp Formats
+## Supported Timestamp Formats
 
 The extension automatically parses various timestamp formats from video descriptions:
 
@@ -38,7 +38,7 @@ The extension automatically parses various timestamp formats from video descript
 - `(0:00)`, `[1:23]`, `{12:34}` (with brackets/parentheses)
 - Removes common prefixes like "Chapter 1:", "Part 2:", bullet points, etc.
 
-## 🚀 Installation
+## Installation
 
 ### Firefox
 1. Open Firefox and go to `about:debugging`
@@ -47,29 +47,29 @@ The extension automatically parses various timestamp formats from video descript
 4. Select the `manifest.json` file from this extension folder
 5. The extension will be loaded and ready to use
 
-## 📖 How to Use
+## How to Use
 
 1. **Visit a YouTube video** that has chapters/timestamps in the description
-2. **Look for the floating button** (📚 icon) on the right side of the page
+2. **Look for the floating button** <img src="icons/book.svg" width="16" height="16" style="vertical-align: middle;"> on the right side of the page
 3. **Click the extension icon** in your browser toolbar
-4. **Click "Track Course"** to add the video to your course list
+4. **Click "Track Course"** <img src="icons/add.svg" width="16" height="16" style="vertical-align: middle;"> to add the video to your course list
 5. **Return to the video** - the progress tracker will now appear in the right sidebar
 6. **Watch the video** - progress updates automatically as you watch
 7. **Use the progress tracker** to:
    - See your overall progress and watch time
    - Jump to specific chapters by clicking them
-   - Reset individual chapter progress with the ↻ button
-   - View completion status for each chapter
+   - Reset individual chapter progress with the <img src="icons/reset.svg" width="16" height="16" style="vertical-align: middle;"> button
+   - View completion status for each chapter <img src="icons/check.svg" width="16" height="16" style="vertical-align: middle;">
 8. **View all courses** by clicking the extension icon from any page
 
-## 🎮 Controls
+## Controls
 
 - **Click chapters**: Jump to timestamp
-- **↻ button**: Reset individual chapter progress
-- **−/+ button**: Collapse/expand progress tracker
-- **Floating 📚 button**: Toggle progress tracker visibility
+- **Reset button** <img src="icons/reset.svg" width="16" height="16" style="vertical-align: middle;">: Reset individual chapter progress
+- **Expand/Collapse** <img src="icons/plus.svg" width="16" height="16" style="vertical-align: middle;"><img src="icons/minus.svg" width="16" height="16" style="vertical-align: middle;">: Minimize/maximize progress tracker
+- **Floating button** <img src="icons/book.svg" width="16" height="16" style="vertical-align: middle;">: Toggle progress tracker visibility
 
-## 📊 Progress Tracking
+## Progress Tracking
 
 - **Chapter completion**: Automatically marked as complete when you watch 90% of a chapter
 - **Real-time updates**: Progress updates every second while the video is playing
@@ -77,13 +77,13 @@ The extension automatically parses various timestamp formats from video descript
 - **Session counting**: Tracks how many times you've visited each course
 - **Watch time**: Only counts time when the video is actually playing (not paused)
 
-## 🗂️ Data Storage
+## Data Storage
 
 - All data is stored locally in your browser using the WebExtensions storage API
 - No data is sent to external servers
 - Automatic cleanup removes courses not watched in over a month
 
-## 🔧 Troubleshooting
+## Troubleshooting
 
 ### Extension not working on YouTube
 - Make sure you've granted the extension permission to access YouTube
@@ -102,11 +102,11 @@ The extension automatically parses various timestamp formats from video descript
 - Clear browser cache and reload
 
 ### UI not appearing
-- Look for the floating 📚 button on the right side
+- Look for the floating <img src="icons/book.svg" width="16" height="16" style="vertical-align: middle;"> button on the right side
 - Try clicking the extension icon and tracking the course first
 - Check if the video has a description with timestamps
 
-## 🛠️ Development
+## Development
 
 ### File Structure
 ```
@@ -116,11 +116,16 @@ The extension automatically parses various timestamp formats from video descript
 ├── content.js                 # YouTube page integration
 ├── content.css                # Progress tracker styling
 ├── background.js              # Background script for data management
-├── icons/                     # Extension icons
-│   ├── icon16.png
-│   ├── icon48.png
-│   ├── icon128.png
-│   └── create-icons.html      # Icon generator tool
+├── icons/                     # Extension icons and UI elements
+│   ├── add.svg               # Add/track course button
+│   ├── book.svg              # Main extension icon
+│   ├── check.svg             # Completion indicator
+│   ├── circle.svg            # UI element
+│   ├── edit.svg              # Edit functionality
+│   ├── minus.svg             # Collapse control
+│   ├── plus.svg              # Expand control
+│   ├── remove.svg            # Remove/delete action
+│   └── reset.svg             # Reset progress button
 └── README.md                  # This file
 ```
 
@@ -130,9 +135,9 @@ The extension automatically parses various timestamp formats from video descript
 - **UI Manager**: Sidebar integration and responsive design
 - **Data Manager**: Local storage and session tracking
 
-## 🎨 Icons
+## Icons
 
-The extension includes custom-generated icons showing a book with progress bars, representing the course tracking functionality. Icons are available in 16x16, 48x48, and 128x128 sizes.
+The extension includes a comprehensive set of SVG icons for all UI interactions. All icons use `currentColor` fill to automatically adapt to light and dark themes.
 
 ### Icon Attribution
 
@@ -144,7 +149,7 @@ This extension uses icons from the CSS.GG icon library (stylized as CSS＊GG) an
 
 The CSS.GG and GLYF＊APP icons are used under their license terms. All brand names and stylizations remain intact and unaltered as required.
 
-## 📄 License
+## License
 
 This project is open source and available under the MIT License.
 
@@ -167,10 +172,10 @@ The icons used in this extension are from the CSS.GG icon library (stylized as C
 
 **Attribution**: This extension uses icons from CSS.GG (CSS＊GG) and GLYF＊APP by Astrit. The brand names and their stylizations remain intact and unaltered as required by their license terms.
 
-## 🤝 Contributing
+## Contributing
 
 Feel free to submit issues and enhancement requests! The extension is designed to be easily extensible for additional features.
 
 ---
 
-**Happy Learning! 📚✨**
+**Happy Learning!** <img src="icons/book.svg" width="20" height="20" style="vertical-align: middle;">
