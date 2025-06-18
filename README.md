@@ -1,6 +1,6 @@
 # YouTube Video Tracker
 
-<img src="icons/book.svg" width="24" height="24" style="vertical-align: middle;"> A Firefox extension that helps you track your progress through YouTube courses with chapter-based progress tracking.
+<img src="icons/icon.png" width="32" height="32" style="vertical-align: middle;"> A Firefox extension that helps you track your progress through YouTube courses with chapter-based progress tracking.
 
 ## Features
 
@@ -26,7 +26,7 @@
 ### Interactive Elements
 - **Floating button**: Always-visible Video Tracker access
 - **Chapter navigation**: Click chapters to jump to timestamps
-- **Reset buttons**: Individual chapter progress reset <img src="icons/reset.svg" width="16" height="16" style="vertical-align: middle;">
+- **Reset buttons**: Individual chapter progress reset <img src="icons/reset.svg" width="16" height="16" style="vertical-align: middle; background: white; border-radius: 3px; padding: 1px;">
 - **Collapsible UI**: Minimize/maximize the progress tracker
 
 ## Supported Timestamp Formats
@@ -50,24 +50,24 @@ The extension automatically parses various timestamp formats from video descript
 ## How to Use
 
 1. **Visit a YouTube video** that has chapters/timestamps in the description
-2. **Look for the floating button** <img src="icons/book.svg" width="16" height="16" style="vertical-align: middle;"> on the right side of the page
+2. **Look for the floating button** <img src="icons/book.svg" width="16" height="16" style="vertical-align: middle; background: white; border-radius: 3px; padding: 1px;"> on the right side of the page
 3. **Click the extension icon** in your browser toolbar
-4. **Click "Track Course"** <img src="icons/add.svg" width="16" height="16" style="vertical-align: middle;"> to add the video to your course list
+4. **Click "Track Course"** <img src="icons/add.svg" width="16" height="16" style="vertical-align: middle; background: white; border-radius: 3px; padding: 1px;"> to add the video to your course list
 5. **Return to the video** - the progress tracker will now appear in the right sidebar
 6. **Watch the video** - progress updates automatically as you watch
 7. **Use the progress tracker** to:
    - See your overall progress and watch time
    - Jump to specific chapters by clicking them
-   - Reset individual chapter progress with the <img src="icons/reset.svg" width="16" height="16" style="vertical-align: middle;"> button
-   - View completion status for each chapter <img src="icons/check.svg" width="16" height="16" style="vertical-align: middle;">
+   - Reset individual chapter progress with the <img src="icons/reset.svg" width="16" height="16" style="vertical-align: middle; background: white; border-radius: 3px; padding: 1px;"> button
+   - View completion status for each chapter <img src="icons/check.svg" width="16" height="16" style="vertical-align: middle; background: white; border-radius: 3px; padding: 1px;">
 8. **View all courses** by clicking the extension icon from any page
 
 ## Controls
 
 - **Click chapters**: Jump to timestamp
-- **Reset button** <img src="icons/reset.svg" width="16" height="16" style="vertical-align: middle;">: Reset individual chapter progress
-- **Expand/Collapse** <img src="icons/plus.svg" width="16" height="16" style="vertical-align: middle;"><img src="icons/minus.svg" width="16" height="16" style="vertical-align: middle;">: Minimize/maximize progress tracker
-- **Floating button** <img src="icons/book.svg" width="16" height="16" style="vertical-align: middle;">: Toggle progress tracker visibility
+- **Reset button** <img src="icons/reset.svg" width="16" height="16" style="vertical-align: middle; background: white; border-radius: 3px; padding: 1px;">: Reset individual chapter progress
+- **Expand/Collapse** <img src="icons/plus.svg" width="16" height="16" style="vertical-align: middle; background: white; border-radius: 3px; padding: 1px;"><img src="icons/minus.svg" width="16" height="16" style="vertical-align: middle; background: white; border-radius: 3px; padding: 1px;">: Minimize/maximize progress tracker
+- **Floating button** <img src="icons/book.svg" width="16" height="16" style="vertical-align: middle; background: white; border-radius: 3px; padding: 1px;">: Toggle progress tracker visibility
 
 ## Progress Tracking
 
@@ -102,7 +102,7 @@ The extension automatically parses various timestamp formats from video descript
 - Clear browser cache and reload
 
 ### UI not appearing
-- Look for the floating <img src="icons/book.svg" width="16" height="16" style="vertical-align: middle;"> button on the right side
+- Look for the floating <img src="icons/book.svg" width="16" height="16" style="vertical-align: middle; background: white; border-radius: 3px; padding: 1px;"> button on the right side
 - Try clicking the extension icon and tracking the course first
 - Check if the video has a description with timestamps
 
@@ -116,16 +116,7 @@ The extension automatically parses various timestamp formats from video descript
 ├── content.js                 # YouTube page integration
 ├── content.css                # Progress tracker styling
 ├── background.js              # Background script for data management
-├── icons/                     # Extension icons and UI elements
-│   ├── add.svg               # Add/track course button
-│   ├── book.svg              # Main extension icon
-│   ├── check.svg             # Completion indicator
-│   ├── circle.svg            # UI element
-│   ├── edit.svg              # Edit functionality
-│   ├── minus.svg             # Collapse control
-│   ├── plus.svg              # Expand control
-│   ├── remove.svg            # Remove/delete action
-│   └── reset.svg             # Reset progress button
+├── icons/                     # Extension icons and UI elements folder
 └── README.md                  # This file
 ```
 
@@ -172,10 +163,14 @@ The icons used in this extension are from the CSS.GG icon library (stylized as C
 
 **Attribution**: This extension uses icons from CSS.GG (CSS＊GG) and GLYF＊APP by Astrit. The brand names and their stylizations remain intact and unaltered as required by their license terms.
 
+## Development Notes
+
+This extension was primarily developed with the assistance of Claude (Anthropic's AI assistant), demonstrating the potential of AI-assisted software development for creating functional browser extensions and user interfaces.
+
 ## Contributing
 
 Feel free to submit issues and enhancement requests! The extension is designed to be easily extensible for additional features.
 
 ---
 
-**Happy Learning!** <img src="icons/book.svg" width="20" height="20" style="vertical-align: middle;">
+**Happy Learning!** <img src="icons/book.svg" width="20" height="20" style="vertical-align: middle; background: white; border-radius: 4px; padding: 2px;">
